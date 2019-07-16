@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <button onclick="record()">开始录音</button>
+    <button onclick="stopRecord()">结束录音</button>
+    <audio class="audio-node" autoplay></audio>
+
+    <script src="./voice_recorder.js"></script>
+    <script>
+        const res = new VRecorder();
+        function record() {
+            res.start()
+        }
+        function stopRecord() {
+            let blobUrl = res.stopRecord()
+            console.log('音频:' + blobUrl)
+            document.querySelector('.audio-node').src = blobUrl;
+        }
+    </script>
+</body>
+</html>
